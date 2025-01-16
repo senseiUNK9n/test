@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinknDrink - Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #fef9ef;
+            color: #2c2c2c;
+        }
+
+        /* Header */
+        header {
+            background-color: #6a1b9a;
+            /* Purple */
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Layout */
+        main {
+            padding: 40px 50px;
+        }
+
+        /* Categories Section */
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: #6a1b9a;
+            /* Purple */
+            margin-bottom: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #2c2c2c;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            margin: 10px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            /* Change to white */
+            color: #6a1b9a;
+            /* Adjust text color for better contrast */
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content input,
+        .modal-content button {
+            background-color: #6a1b9a;
+            /* Purple */
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .modal-content input:focus,
+        .modal-content button:focus {
+            outline: none;
+            background-color: #4a148c;
+            /* Darker purple when focused */
+        }
+
+        .modal-content button:hover {
+            background-color: #320b5a;
+            /* Even darker purple */
+        }
+
+        /* Product Modal */
+        #productModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #productModal .modal-content {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">ThinknDrink</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Beverages Section -->
+        <section class="category-section" id="beverages">
+            <h2 class="category-title">Beverages</h2>
+            <div class="products">
+                <div class="product-card"
+                    onclick="showProductModal('Cappuccino', 'Rich espresso with steamed milk and foam.')">
+                    <img src="c.jpeg" alt="Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p>Rich espresso with steamed milk and foam.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" onclick="showProductModal('Lemonade', 'Refreshing homemade lemonade.')">
+                    <img src="l.jpg" alt="Lemonade">
+                    <h3>Lemonade</h3>
+                    <p>Refreshing homemade lemonade.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card" onclick="showProductModal('Iced Tea', 'Chilled tea with a hint of lemon.')">
+                    <img src="ice.jpg" alt="Iced Tea">
+                    <h3>Iced Tea</h3>
+                    <p>Chilled tea with a hint of lemon.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card"
+                    onclick="showProductModal('Berry Smoothie', 'Blend of fresh berries and yogurt.')">
+                    <img src="b.webp" alt="Berry Smoothie">
+                    <h3>Berry Smoothie</h3>
+                    <p>Blend of fresh berries and yogurt.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Snacks Section -->
+        <section class="category-section" id="snacks">
+            <h2 class="category-title">Snacks</h2>
+            <div class="products">
+                <div class="product-card"
+                    onclick="showProductModal('French Fries', 'Crispy golden fries with a dash of salt.')">
+                    <img src="fries.jpg" alt="French Fries">
+                    <h3>French Fries</h3>
+                    <p>Crispy golden fries with a dash of salt.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card"
+                    onclick="showProductModal('Nachos', 'Tortilla chips topped with cheese sauce and salsa.')">
+                    <img src="nachos.jpg" alt="Nachos">
+                    <h3>Nachos</h3>
+                    <p>Tortilla chips topped with cheese sauce and salsa.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card"
+                    onclick="showProductModal('Cheese Sticks', 'Crispy fried cheese sticks served with marinara sauce.')">
+                    <img src="cheese.jpg" alt="Cheese Sticks">
+                    <h3>Cheese Sticks</h3>
+                    <p>Crispy fried cheese sticks served with marinara sauce.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product-card"
+                    onclick="showProductModal('Spring Rolls', 'Lightly fried rolls filled with vegetables or meat.')">
+                    <img src="springrolls.jpg" alt="Spring Rolls">
+                    <h3>Spring Rolls</h3>
+                    <p>Lightly fried rolls filled with vegetables or meat.</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ThinknDrink. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h2 id="productName"></h2>
+            <p id="productDescription"></p>
+            <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+            <button class="close-modal" onclick="closeProductModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showProductModal(name, description) {
+            document.getElementById('productName').textContent = name;
+            document.getElementById('productDescription').textContent = description;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+        
+        function addToCart() {
+            alert('Item added to cart!');
+            closeProductModal();
+        }
+    </script>
+</body>
+
+</html>

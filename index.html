@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ThinknDrink - Explore Categories</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #6a1b9a; /* Purple text */
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: #6a1b9a; /* Purple */
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff; /* White background for search bar */
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #6a1b9a; /* Purple border */
+        }
+
+        .search-bar select,
+        .search-bar input[type="text"] {
+            border: none;
+            padding: 5px;
+            margin-right: 10px;
+            color: #6a1b9a; /* Purple text */
+        }
+
+        .search-bar select:focus,
+        .search-bar input[type="text"]:focus {
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #6a1b9a; /* Purple button */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #4e148c; /* Darker purple on hover */
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal h3 {
+            color: #6a1b9a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #6a1b9a;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .modal .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .modal button {
+            width: 48%;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #4e148c;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 40px 50px;
+        }
+
+        .categories-section h2 {
+            color: #6a1b9a;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: #ffffff; /* White background for category cards */
+            border: 1px solid #6a1b9a; /* Purple border */
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #6a1b9a; /* Purple glow on hover */
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #6a1b9a; /* Purple text */
+        }
+
+        .category-card a {
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #6a1b9a; /* Purple button */
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-card a:hover {
+            background-color: #4e148c; /* Darker purple on hover */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6a1b9a; /* Purple */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">ThinknDrink</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <video autoplay muted loop style="width: 100%; height: auto;">
+            <source src="Brown Organic Coffee Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <main>
+        <section class="categories-section">
+            <h2>Explore Our Categories</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <img src="cafe-beverage-coffee-drink-espresso_87720-32360.avif" alt="Beverages">
+                    <h3>Beverages</h3>
+                    <a href="menu.html">Explore</a>
+                </div>
+                <div class="category-card">
+                    <img src="food.jpg" alt="Food">
+                    <h3>Food</h3>
+                    <a href="menu.html">Explore</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ThinknDrink. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals and Scripts (Same as above) -->
+    <div class="overlay" id="overlay"></div>
+
+</body>
+</html>
